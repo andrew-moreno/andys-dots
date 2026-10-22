@@ -1,0 +1,51 @@
+[opener]
+qview = [
+	{ run = 'qview %s', orphan = true, desc = "qView", for = "unix" }
+]
+loupe = [
+	{ run = 'loupe %s', orphan = true, desc = "Loupe", for = "unix" }
+]
+codium = [
+    { run = 'codium "%s"', orphan = true, desc = "VS Code", for = "unix" }
+]
+
+[open]
+prepend_rules = [
+	{ mime = "image/*", use = [ "qview", "loupe" ] },
+	{ mime = "text/*", use = "codium" }
+]
+
+# Added for gvfs.yazi support
+[plugin]
+prepend_preloaders = [
+  # Do not preload files in mounted locations:
+  # Environment variable won't work here.
+  # Using absolute path instead.
+  { url = "/run/user/amoreno/gvfs/**/*", run = "noop" },
+
+  # For mounted hard disk/drive
+  { url = "/run/media/amoreno/**/*", run = "noop" },
+
+  # You can also use glob pattern to match paths
+  { url = "/run/user/*/gvfs/google-drive:host=gmail.com,user=*/**/*", run = "noop", prio = "high" },
+  { url = "/run/user/*/gvfs/google-drive:host=gmail.com,user=*/**/*/", run = "noop", prio = "high" },
+
+]
+prepend_previewers = [
+  # Allow to preview folder.
+  { url = "*/", run = "folder" },
+
+  # Do not previewing files in mounted locations.
+  # Uncomment the line below to allow previewing text files.
+  # { mime = "{text/*,application/x-subrip}", run = "code" },
+
+  # Using absolute path.
+  { url = "/run/user/amoreno/gvfs/**/*", run = "noop" },
+
+  # For mounted hard disk/drive.
+  { url = "/run/media/amoreno/**/*", run = "noop" },
+
+  # You can also use glob pattern to match paths
+  { url = "/run/user/*/gvfs/google-drive:host=gmail.com,user=*/**/*", run = "noop", prio = "high" },
+  { url = "/run/user/*/gvfs/google-drive:host=gmail.com,user=*/**/*/", run = "noop", prio = "high" },
+]

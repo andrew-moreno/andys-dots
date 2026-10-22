@@ -1,0 +1,156 @@
+{
+    "telemetry.sqmId": "",
+    "telemetry.machineId": "74579d7dda420a202789068c10edde884d60d5e97fdcbb7dbd1656c51ca6a6e8",
+    "telemetry.devDeviceId": "b379b971-3b96-44eb-b9c3-5d869b664cd4",
+    "backupWorkspaces": {
+        "workspaces": [],
+        "folders": [],
+        "emptyWindows": [
+            {
+                "backupFolder": "1792554454082"
+            }
+        ]
+    },
+    "windowControlHeight": 35,
+    "profileAssociations": {
+        "workspaces": {
+            "file:///home/amoreno/.config/niri/cfg": "__default__profile__",
+            "file:///home/amoreno/.config/niri": "__default__profile__",
+            "file:///home/amoreno/Pictures/Wallpapers": "__default__profile__",
+            "file:///home/amoreno/Shared/Pictures/Fuji/X100VI": "__default__profile__",
+            "file:///home/amoreno/.config": "__default__profile__",
+            "file:///home/amoreno/.local/share/Steam/steamapps/common/SMITE%202": "__default__profile__",
+            "file:///home/amoreno/Downloads": "__default__profile__",
+            "file:///etc": "__default__profile__"
+        },
+        "emptyWindows": {
+            "1792554454082": "__default__profile__"
+        }
+    },
+    "theme": "vs-dark",
+    "themeBackground": "#121314",
+    "windowSplash": {
+        "zoomLevel": 0,
+        "baseTheme": "vs-dark",
+        "colorInfo": {
+            "foreground": "#bfbfbf",
+            "background": "#121314",
+            "editorBackground": "#121314",
+            "titleBarBackground": "#191a1b",
+            "titleBarInactiveBackground": "#121314",
+            "titleBarBorder": "#2a2b2c",
+            "activityBarBackground": "#191a1b",
+            "activityBarBorder": "#2a2b2c",
+            "modernActivityBarBackground": "#191a1b",
+            "modernActivityBarInactiveBackground": "#191a1b",
+            "modernActivityBarBorder": "#252526",
+            "modernPanelBorder": "#2a2b2c",
+            "modernUIShellBackground": "#191a1b",
+            "modernUIInactiveShellBackground": "#121314",
+            "sideBarBackground": "#191a1b",
+            "sideBarBorder": "#2a2b2c",
+            "panelBackground": "#191a1b",
+            "editorGroupBorder": "rgba(255, 255, 255, 0.09)",
+            "editorBorder": "#2a2b2c",
+            "surfaceBackground": "#191a1b",
+            "surfaceBorder": "#2a2b2c",
+            "agentsPanelBackground": "#191a1b",
+            "agentsPanelBorder": "#2a2b2c",
+            "statusBarBackground": "#191a1b",
+            "statusBarInactiveBackground": "#121314",
+            "statusBarBorder": "#2a2b2c",
+            "statusBarNoFolderBackground": "#191a1b"
+        },
+        "layoutInfo": {
+            "sideBarSide": "left",
+            "editorPartMinWidth": 220,
+            "titleBarHeight": 35,
+            "activityBarWidth": 48,
+            "sideBarWidth": 0,
+            "auxiliaryBarWidth": 0,
+            "statusBarHeight": 28,
+            "windowBorder": false,
+            "modernUI": true,
+            "modernUICompact": false,
+            "partBounds": {
+                "activityBar": {
+                    "top": 35,
+                    "left": 4,
+                    "width": 44,
+                    "height": 1319,
+                    "outerEdges": {
+                        "left": true,
+                        "right": false,
+                        "top": true,
+                        "bottom": true
+                    }
+                },
+                "editor": {
+                    "top": 35,
+                    "left": 52,
+                    "width": 2220,
+                    "height": 1319,
+                    "outerEdges": {
+                        "left": false,
+                        "right": true,
+                        "top": true,
+                        "bottom": true
+                    }
+                }
+            }
+        }
+    },
+    "windowsState": {
+        "lastActiveWindow": {
+            "backupPath": "/home/amoreno/.config/VSCodium/Backups/1792554454082",
+            "uiState": {
+                "mode": 1,
+                "x": 16,
+                "y": 10,
+                "width": 2276,
+                "height": 1386
+            }
+        },
+        "openedWindows": []
+    },
+    "windowSplashWorkspaceOverride": {
+        "layoutInfo": {
+            "sideBarWidth": 412,
+            "auxiliaryBarWidth": 300,
+            "workspaces": {
+                "f8053002083407c6b998490eb5999d4a": {
+                    "sideBarVisible": true,
+                    "auxiliaryBarVisible": false
+                },
+                "8059dd315e350cf393555676d041c7b7": {
+                    "sideBarVisible": true,
+                    "auxiliaryBarVisible": false
+                },
+                "b7ef7b312a97cbebcf3c3bdd5806f56a": {
+                    "sideBarVisible": true,
+                    "auxiliaryBarVisible": false
+                },
+                "f0d3e99dc47b61c690dc7aa0149ae3d1": {
+                    "sideBarVisible": true,
+                    "auxiliaryBarVisible": false
+                },
+                "2f101b6358d622f35dc03acaaec5eb67": {
+                    "sideBarVisible": true,
+                    "auxiliaryBarVisible": false
+                },
+                "792f3c946a3596da51f7d3ae52cf3138": {
+                    "sideBarVisible": true,
+                    "auxiliaryBarVisible": false
+                },
+                "a499453942f64ce1caa38fe4c1c1dbc4": {
+                    "sideBarVisible": true,
+                    "auxiliaryBarVisible": false
+                },
+                "85d94710cab55e59aeb26a967d2346cf": {
+                    "sideBarVisible": true,
+                    "auxiliaryBarVisible": false
+                }
+            }
+        }
+    }
+}

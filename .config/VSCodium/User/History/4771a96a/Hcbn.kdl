@@ -1,0 +1,6 @@
+gestures {
+    hot-corners {
+        // Enable only the top-right and bottom-right corners
+        top-right bottom-right
+    }
+}

@@ -1,0 +1,6 @@
+background-opacity = 0.85
+background-blur = true
+theme = noctalia
+confirm-close-surface = false
+keybind = ctrmodl+enter=unbind
+keybind = ctrl+mod+f=unbind

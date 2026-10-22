@@ -1,0 +1,368 @@
+include "./noctalia.kdl"
+
+// Autostart
+spawn-at-startup "noctalia"
+spawn-at-startup "vicinae" "server"
+spawn-at-startup "Spotify"
+spawn-at-startup "steam"
+
+animations {
+    workspace-switch {
+        spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001
+    }
+    window-open {
+        duration-ms 200
+        curve "ease-out-quad"
+    }
+    window-close {
+        duration-ms 200
+        curve "ease-out-cubic"
+    }
+    horizontal-view-movement {
+        spring damping-ratio=1.0 stiffness=900 epsilon=0.0001
+    }
+    window-movement {
+        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+    }
+    window-resize {
+        spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001
+    }
+    config-notification-open-close {
+        spring damping-ratio=0.6 stiffness=1200 epsilon=0.001
+    }
+    screenshot-ui-open {
+        duration-ms 300
+        curve "ease-out-quad"
+    }
+    overview-open-close {
+        spring damping-ratio=1.0 stiffness=900 epsilon=0.0001
+    }
+}
+
+output "DP-1" {
+    mode "3440x1440@144.001" // Set resolution and refresh rate
+    scale 1 // No scaling (use 2 for HiDPI)
+}
+
+gestures {
+
+    hot-corners {
+        // Enable only the top-right and bottom-right corners
+        top-right
+    }
+}
+
+input {
+    keyboard {
+        xkb {
+            //If you want to overwrite your keyboard layout,
+            // uncomment the line below and change the layout accordingly.
+            //layout "us" // Use the American keyboard layout
+        }
+        numlock // Enable numlock on startup
+    }
+
+    mouse {
+        // If you want to disable Mouse Acceleration,
+        // uncomment the lines below.
+        accel-profile "flat"
+        accel-speed 0.0
+    }
+
+    // focus-follows-mouse // Automatically focus windows under the mouse pointer
+    // workspace-auto-back-and-forth // Enable workspace back & forth switching
+}
+
+binds {
+
+    Mod+Shift+ESCAPE                     { show-hotkey-overlay; }
+
+    // ─── Applications ───
+    Mod+E                               hotkey-overlay-title="File Manager: Yazi"                   { spawn "kitty" "yazi"; }
+    CTRL+Space                          hotkey-overlay-title="Open App Launcher: Vicinae"           { spawn "vicinae" "toggle"; }
+    
+	// These apps are launched using the niri-run-or-raise script, which navigates to the app if it's already running
+    Mod+B                               hotkey-overlay-title="Open Browser: Brave"                  { spawn "~/.local/bin/niri-run-or-raise" "brave-origin"; }
+	Mod+O                               hotkey-overlay-title="Open Obsidian: Obsidian"              { spawn "~/.local/bin/niri-run-or-raise" "obsidian"; }
+    Mod+Return                          hotkey-overlay-title="Open Terminal: Kitty"                 { spawn "~/.local/bin/niri-run-or-raise" "kitty"; }
+
+    // ─── Media Controls ───
+    XF86AudioRaiseVolume                allow-when-locked=true { spawn-sh "noctalia msg volume-up"; }
+    XF86AudioLowerVolume                allow-when-locked=true { spawn-sh "noctalia msg volume-down"; }
+    XF86AudioNext                       allow-when-locked=true { spawn-sh "noctalia msg media next"; }
+    XF86AudioPrev                       allow-when-locked=true { spawn-sh "noctalia msg media previous"; }
+    XF86AudioPlay                       allow-when-locked=true { spawn-sh "noctalia msg media playPause"; }
+    XF86AudioPause                      allow-when-locked=true { spawn-sh "noctalia msg media playPause"; }
+
+
+    // ─── Window Movement and Focus ───
+    Mod+Q                               { close-window; }
+    Mod+BracketLeft	                    { consume-window-into-column; }
+    Mod+BracketRight	                { expel-window-from-column; }
+
+    Mod+Left                            { focus-column-left; }
+    Mod+H                               { focus-column-left; }
+    Mod+A                               { focus-column-left; }
+    Mod+Right                           { focus-column-right; }
+    Mod+L                               { focus-column-right; }
+    Mod+D                               { focus-column-right; }
+    Mod+Up                              { focus-window-up; }
+    Mod+K                               { focus-window-up; }
+    Mod+Down                            { focus-window-down; }
+    Mod+J                               { focus-window-down; }
+
+    Mod+ALT+Left                        { move-column-left; }
+    Mod+ALT+H                           { move-column-left; }
+    Mod+ALT+Right                       { move-column-right; }
+    Mod+ALT+L                           { move-column-right; }
+    Mod+ALT+UP                          { move-window-up; }
+    Mod+ALT+K                           { move-window-up; }
+    Mod+ALT+Down                        { move-window-down; }
+    Mod+ALT+J                           { move-window-down; }
+
+    Mod+Shift+Left                      { focus-column-first; }
+    Mod+Shift+H                         { focus-column-first; }
+    Mod+Shift+Right                     { focus-column-last; }
+    Mod+Shift+L                         { focus-column-last; }
+    Mod+Shift+CTRL+Left                 { move-column-to-first; }
+    Mod+Shift+CTRL+H                    { move-column-to-first; }
+    Mod+Shift+CTRL+Right                { move-column-to-last; }
+    Mod+Shift+CTRL+L                    { move-column-to-last; }
+
+    // ─── Workspace Switching ───
+    Mod+WheelScrollUp                   cooldown-ms=150 { focus-column-left; }
+    Mod+WheelScrollDown                 cooldown-ms=150 { focus-column-right; }
+    Mod+ALT+WheelScrollUp               cooldown-ms=150 { move-column-left; }
+    Mod+ALT+WheelScrollDown             cooldown-ms=150 { move-column-right; }
+
+    Mod+Shift+WheelScrollUp             { focus-workspace-down; }
+    Mod+Shift+WheelScrollDown           { focus-workspace-up; }
+    Mod+ALT+Shift+WheelScrollUp         { move-column-to-workspace-down; }
+    Mod+ALT+Shift+WheelScrollDown       { move-column-to-workspace-up; }
+
+    Mod+1                               { focus-workspace 1; }
+    Mod+2                               { focus-workspace 2; }
+    Mod+3                               { focus-workspace 3; }
+    Mod+4                               { focus-workspace 4; }
+    Mod+5                               { focus-workspace 5; }
+    Mod+6                               { focus-workspace 6; }
+    Mod+7                               { focus-workspace 7; }
+    Mod+8                               { focus-workspace 8; }
+    Mod+9                               { focus-workspace 9; }
+
+    Mod+ALT+1                           { move-column-to-workspace 1; }
+    Mod+ALT+2                           { move-column-to-workspace 2; }
+    Mod+ALT+3                           { move-column-to-workspace 3; }
+    Mod+ALT+4                           { move-column-to-workspace 4; }
+    Mod+ALT+5                           { move-column-to-workspace 5; }
+    Mod+ALT+6                           { move-column-to-workspace 6; }
+    Mod+ALT+7                           { move-column-to-workspace 7; }
+    Mod+ALT+8                           { move-column-to-workspace 8; }
+    Mod+ALT+9                           { move-column-to-workspace 9; }
+
+    // ─── Layout Controls ───
+    Mod+ALT+Return                      { maximize-column; }
+    Mod+F                               { expand-column-to-available-width; }
+    Mod+C                               { center-column; }
+    Mod+CTRL+C                          { center-visible-columns; }
+    // Mod+Minus                        { set-column-width "-10%"; }
+    // Mod+Equal                        { set-column-width "+10%"; }
+    // Mod+Shift+Minus                  { set-window-height "-10%"; }
+    // Mod+Shift+Equal                  { set-window-height "+10%"; }
+
+    Mod+Equal                           { switch-preset-column-width; }
+    Mod+Minus                           { switch-preset-column-width-back; }
+
+    // ─── Modes ───
+    Mod+T                               { toggle-window-floating; }
+    Mod+CTRL+F                          { fullscreen-window; }
+
+    // ─── Screenshots ───
+    CTRL+Mod+Shift+1                        { screenshot; }
+    CTRL+Mod+Shift+2                        { screenshot-screen; }
+    CTRL+Mod+Shift+3                        { screenshot-window; }
+
+	// ─── Clipboard ───
+   	Mod+V                               { spawn "noctalia" "msg" "panel-toggle" "clipboard"; }
+
+    // ─── Emergency Escape Key ───
+    // Use this when a fullscreen app blocks your keybinds.
+    // It disables any active keyboard shortcut inhibitor, restoring control.
+    Mod+ESCAPE                          allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+
+    // ─── Exit / Power ───
+    CTRL+ALT+Delete                     { quit; } // Also quits Niri
+    Mod+Shift+P                         { power-off-monitors; } // Turn off screens (useful for OLED or privacy)
+    Mod+Tab                             repeat=false { toggle-overview; }
+}
+
+
+layout {
+    gaps 10 // Gap between windows
+    always-center-single-column
+    center-focused-column "never" // Don’t auto-center focused column
+
+    background-color "transparent" // <- needed for noctalia to set wallpaper
+
+    default-column-width { proportion 0.5; }
+
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+        proportion 0.99999
+    }
+
+    struts {}
+}
+
+recent-windows {
+	binds {
+	        Alt+Tab         { next-window; }
+	        Alt+Shift+Tab   { previous-window; }
+	        Alt+grave       { next-window     filter="app-id"; }
+	        Alt+Shift+grave { previous-window filter="app-id"; }
+	    }
+}
+
+
+// Misc
+prefer-no-csd
+screenshot-path null
+
+environment {
+    ELECTRON_OZONE_PLATFORM_HINT "auto"
+    QT_QPA_PLATFORM "wayland"
+    QT_QPA_PLATFORMTHEME "gtk3"
+    QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+    XDG_CURRENT_DESKTOP "niri"
+    XDG_SESSION_TYPE "wayland"
+}
+
+cursor {
+    xcursor-theme "capitaine-cursors"
+    xcursor-size 24
+}
+
+debug {
+    // Allows notification actions and window activation from Noctalia.
+    honor-xdg-activation-with-invalid-serial
+}
+
+hotkey-overlay {
+    skip-at-startup
+}
+
+// Workspaces
+workspace "General"
+workspace "Dev"
+workspace "Games"
+workspace "Media"
+
+// App Rules
+
+// General App Rules
+window-rule {
+	match app-id="discord"
+	match app-id="org.gnome.Nautilus"
+	match app-id="md.obsidian.Obsidian"
+	default-column-width { proportion 0.33333; }
+	open-on-workspace "General"
+}
+
+window-rule {
+	match app-id="zen"
+	match app-id="brave-origin"
+	default-column-width { proportion 0.66666; }
+	open-on-workspace "General"
+}
+
+// Dev App Rules
+window-rule {
+	match app-id="kitty"
+	default-column-width { proportion 0.33333; }
+	open-on-workspace "Dev"
+}
+
+window-rule {
+
+}
+
+window-rule {
+	match app-id="codium"
+	default-column-width { proportion 0.66666; }
+	open-on-workspace "Dev"
+}
+
+// Games App Rules
+window-rule {
+	match app-id="steam"
+	default-column-width { proportion 0.33333; }
+	open-on-workspace "Games"
+}
+// if you use steam you will probably like these
+window-rule {
+    match app-id="steam"
+    exclude title=r#"^[Ss]team$"#
+    open-floating true
+}
+window-rule {
+   match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
+   default-floating-position x=10 y=10 relative-to="bottom-right"
+   open-focused false
+}
+
+window-rule {
+	match app-id="steam_app_2437170"
+	open-fullscreen true
+}
+
+// Media App Rules
+window-rule {
+	match app-id="Spotify"
+	open-on-workspace "Media"
+	default-column-width { proportion 0.5; }
+	default-window-height { proportion 0.75; }
+	open-floating true
+}
+
+// General App Rules
+window-rule {
+	match app-id="qView"	
+	open-floating true
+}
+
+window-rule {
+	match app-id="1password"
+	match app-id="localsend"
+	open-floating true
+	default-window-height { fixed 700; }
+	default-column-width { fixed 1100; }
+}
+
+
+// Misc Rules
+window-rule {
+    geometry-corner-radius 12 // Set every window radius to 20
+    clip-to-geometry true
+}
+
+// Floating Noctalia settings window.
+window-rule {
+  match app-id="dev.noctalia.Noctalia"
+  open-floating true
+  default-column-width { fixed 1080; }
+  default-window-height { fixed 920; }
+}
+
+layer-rule {
+    match namespace="^noctalia-wallpaper*"
+    place-within-backdrop true
+}
+
+//window-rule {
+//  background-effect {
+//    blur true
+//    xray true
+//  }
+//}

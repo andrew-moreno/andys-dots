@@ -1,0 +1,13 @@
+# BEGIN_KITTY_THEME
+# Noctalia
+include current-theme.conf
+# END_KITTY_THEME
+
+# Fonts
+font_family JetBrainsMono Nerd Font
+bold_font JetBrainsMono Nerd Font Bold
+italic_font JetBrainsMono Nerd Font Italic
+bold_italic_font JetbrainsMono Nerd Font Bold Italic
+
+background_opacity 0.9
+background_blur 1
